@@ -18,7 +18,6 @@ fn log_event(event: &str) {
         .open("/var/log/rs-uptime-logger.log")
         .expect("Failed to open log file");
     file.write_all(log_line.as_bytes()).expect("Failed to write log"); //write log-line to file
-    file.write_all(log_line.as_bytes()).expect("Failed to write log");
 }
 
 fn just_booted() -> bool {
