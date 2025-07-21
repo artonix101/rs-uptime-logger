@@ -1,14 +1,14 @@
 [Unit]
 Description=Rust Uptime Logger
-After=network.target
+DefaultDependencies=no
+Before=shutdown.target
+After=local-fs.target
 
 [Service]
-Type=simple
-ExecStart=/usr/local/bin/rs-uptime-logger
-Restart=on-failure
-RestartSec=5
-TimeoutStopSec=1
-StartLimitIntervalSec=0
+Type=oneshot
+ExecStart=/usr/local/bin/boot
+ExecStop=/usr/local/bin/shutdown
+RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target
