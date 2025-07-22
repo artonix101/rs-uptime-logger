@@ -2,17 +2,18 @@
 An uptime logger service written in Rust
 
 ```
-cargo build --release
+cargo build --bin boot
+cargo build --bin shutdown
 
-cp target/release/rs-uptime-logger /usr/local/bin/rs-uptime-logger
-# chmod +x /usr/local/bin/rs-uptime-logger.service
+cp target/debug/rs-uptime-boot-logger /usr/local/bin/rs-uptime-boot-logger
+cp target/debug/rs-uptime-shutdown-logger /usr/local/bin/rs-uptime-shutdown-logger
 
 touch /var/log/rs-uptime-logger.log
 # chown root:root /var/log/rs-uptime-logger.log
 # chmod 644 /var/log/rs-uptime-logger.log
 
-cp rs-uptime-logger.service /etc/systemd/system/
-systemctl daemon-reexec
-systemctl enable rs-uptime-logger
-systemctl start rs-uptime-logger
+cp rs-uptime-boot-logger.service /etc/systemd/system/
+cp rs-uptime-shutdown-logger.service /etc/systemd/system/
+systemctl enable rs-uptime-boot-logger
+systemctl enbable rs-uptime-boot-logger
 ```
