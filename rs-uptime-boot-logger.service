@@ -1,0 +1,11 @@
+[Unit]
+Description=Rust Uptime Boot Logger
+DefaultDependencies=no
+After=network.target local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/boot
+
+[Install]
+WantedBy=multi-user.target

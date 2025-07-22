@@ -1,0 +1,11 @@
+[Unit]
+Description=Rust Uptime Shutdown Logger
+DefaultDependencies=no
+Before=shutdown.target reboot.target halt.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/shutdown
+
+[Install]
+WantedBy=halt.target reboot.target shutdown.target
