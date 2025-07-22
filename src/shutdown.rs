@@ -1,17 +1,16 @@
 use std::fs;
-use chrono::DateTime;
-use chrono::Local;
+use chrono::{DateTime, Utc};
 
 fn main() {
     // Read boot time
     let start_str = fs::read_to_string("/home/ab/tmp/boot_time.txt")
         .expect("Failed to read boot time");
-    let start: DateTime<Local> = DateTime::parse_from_rfc3339(&start_str)
+    let start: DateTime<Utc> = DateTime::parse_from_rfc3339(&start_str)
         .expect("Invalid boot time format")
-        .with_timezone(&Local);
+        .with_timezone(&Utc);
 
 
-    let end = Local::now();
+    let end = Utc::now();
     let uptime = end - start; //calculate the total uptime 
     let secs = uptime.num_seconds().max(0); //convert to seconds
     let hours = secs / 3600;
@@ -28,7 +27,7 @@ fn log_event(event: &str) {
     use std::fs::OpenOptions; //flexible file opening
     use std::io::Write; //access to .write_all()
 
-    let timestamp = Local::now().to_rfc3339(); //get local time
+    let timestamp = Utc::now().to_rfc3339(); //get local time
     let log_line = format!("[{}] {}\n", timestamp, event); //build log entry string
     let mut file = OpenOptions::new() //open log file for writing
         .create(true)
