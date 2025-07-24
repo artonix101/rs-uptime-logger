@@ -1,5 +1,5 @@
 # rs-uptime-logger
-An uptime logger service written in Rust
+An uptime logger service written in Rust that logs boots, shutdowns and uptime into a simple log file for further use. Two systemd services run at boot and shutdown.
 <p align="left">
   <a href="https://github.com/artonix101/rs-uptime-logger/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/artonix101/rs-uptime-logger" />
