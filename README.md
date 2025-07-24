@@ -6,19 +6,26 @@ An uptime logger service written in Rust
   </a>
 </p>
 
+Build the binaries
 ```
 cargo build --bin boot
 cargo build --bin shutdown
-
-cp target/debug/rs-uptime-boot-logger /usr/local/bin/rs-uptime-boot-logger
-cp target/debug/rs-uptime-shutdown-logger /usr/local/bin/rs-uptime-shutdown-logger
-
-touch /var/log/rs-uptime-logger.log
-# chown root:root /var/log/rs-uptime-logger.log
-# chmod 644 /var/log/rs-uptime-logger.log
-
-cp rs-uptime-boot-logger.service /etc/systemd/system/
-cp rs-uptime-shutdown-logger.service /etc/systemd/system/
-systemctl enable rs-uptime-boot-logger
-systemctl enable rs-uptime-boot-logger
+```
+Copy to user-installed bin folder
+```
+install -m 755 target/debug/{boot,shutdown} /usr/local/bin/
+```
+Create log file
+```
+install -o root -g root -m 644 /dev/null /var/log/rs-uptime-logger.log
+```
+Copy services to services Folder and reload systemd
+```
+install -m 644 rs-uptime-{boot,shutdown}-logger.service /etc/systemd/system/
+systemctl daemon-reload
+```
+Enable at Boot and Shutdown (starting rs-uptime-boot-logger.service manually at any time does not write to log)
+```
+systemctl enable rs-uptime-boot-logger.service
+systemctl enable rs-uptime-shutdown-logger.service
 ```
