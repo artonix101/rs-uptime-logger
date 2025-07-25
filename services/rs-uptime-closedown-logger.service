@@ -5,7 +5,7 @@ Before=shutdown.target reboot.target halt.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/bin/shutdown
+ExecStart=/usr/local/bin/closedown
 
 [Install]
 WantedBy=halt.target reboot.target shutdown.target
