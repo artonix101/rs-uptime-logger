@@ -1,5 +1,5 @@
 [Unit]
-Description=Rust Uptime Shutdown Logger
+Description=Rust Uptime Closedown Logger
 DefaultDependencies=no
 Before=shutdown.target reboot.target halt.target
 

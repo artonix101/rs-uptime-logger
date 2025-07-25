@@ -6,11 +6,16 @@ edition = "2021"
 [dependencies]
 chrono = "0.4"
 signal-hook = "0.3"
+users = "0.11"
 
 [[bin]]
 name = "boot"
 path = "src/boot.rs"
 
 [[bin]]
-name = "shutdown"
-path = "src/shutdown.rs"
+name = "closedown"
+path = "src/closedown.rs"
+
+[[bin]]
+name = "wrappers"
+path = "src/wrappers.rs"
