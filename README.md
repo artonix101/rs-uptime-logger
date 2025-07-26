@@ -19,7 +19,7 @@ Copy to user-installed bin folder
 ```
 install -m 755 target/debug/{boot,closedown,wrappers} /usr/local/bin/
 ```
-Run install script (copies wrapper binaries to /sbin and renames reboot, shutdown and poweroff to .real) - To undo use restore_originals.sh
+Run install script (copies wrapper binaries to /sbin and /usr/bin and renames reboot, shutdown and poweroff to .real) - To undo use restore_originals.sh
 ```
 /scripts/install_wrappers.sh
 ```
