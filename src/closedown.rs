@@ -1,5 +1,5 @@
 use std::fs;
-use chrono::{DateTime, Utc};
+use chrono::{DateTime, Local, Utc};
 
 fn main() {
     // Read boot time
@@ -27,7 +27,7 @@ fn log_event(event: &str) {
     use std::fs::OpenOptions; //flexible file opening
     use std::io::Write; //access to .write_all()
 
-    let timestamp = Utc::now().to_rfc3339(); //get local time
+    let timestamp = Local::now().to_rfc3339(); //get local time
     let log_line = format!("[{}] {}\n", timestamp, event); //build log entry string
     let mut file = OpenOptions::new() //open log file for writing
         .create(true)

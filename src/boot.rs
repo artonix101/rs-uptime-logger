@@ -1,4 +1,4 @@
-use chrono::Utc;
+use chrono::Local;
 use std::fs;
 use std::io::Read;
 
@@ -9,7 +9,7 @@ fn main() {
         return;
     }
 
-    let now = Utc::now();
+    let now = Local::now();
     let timestamp = now.to_rfc3339();
 
     if let Err(e) = fs::write("/home/ab/tmp/boot_time.txt", timestamp) { //todo fix path, /var/tmp doenst work bc. of permissions
@@ -23,7 +23,7 @@ fn log_event(event: &str) {
     use std::fs::OpenOptions; //flexible file opening
     use std::io::Write; //access to .write_all()
 
-    let timestamp = Utc::now().to_rfc3339(); //get local time
+    let timestamp = Local::now().to_rfc3339(); //get local time
     let log_line = format!("[{}] {}\n", timestamp, event); //build log entry string
     let mut file = OpenOptions::new() //open log file for writing
         .create(true)
